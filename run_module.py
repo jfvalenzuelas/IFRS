@@ -5,11 +5,14 @@ import os
 
 def getDocument(id):
     client = pymongo.MongoClient('localhost', 27654)
+    print('CLIENTE: SUCCESS')
     db = client['scrapper']
+    print('BD: SUCCESS')
     coll = db.IFRS
+    print('COLLECTION: SUCESS')
 
     cursor = coll.find({'_id':id})
-    
+    print(cursor)
     return cursor
 
 def run(doc_id):
