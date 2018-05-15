@@ -64,30 +64,26 @@ def writeCell(file_name):
     wb.close()
 
 def writeData(file_name, group, data):
-    try:
-        aux = []
+    aux = []
 
-        if (data[0].lower().strip() == 'ganancia bruta' or 
-        ('utilidad' in data[0].lower().strip() and 'ejercicio' in data[0].lower().strip()) or 
-        ('ganancia' in data[0].lower().strip() and 'antes de impuesto' in data[0].lower().strip())):
-            pass
-        else:
-            log_utils.write('Writing:\nGroup --> '+str(group)+', Text --> '+data[0])
-            # here we get the file's cell's name to write the value
-            target_cell = tools.matchCell(group, data[0])
-            #return target_cell
-            #We load the sheet's cell
-            target_cell = sheet[target_cell]
+    if (data[0].lower().strip() == 'ganancia bruta' or 
+    ('utilidad' in data[0].lower().strip() and 'ejercicio' in data[0].lower().strip()) or 
+    ('ganancia' in data[0].lower().strip() and 'antes de impuesto' in data[0].lower().strip())):
+        pass
+    else:
+        #log_utils.write('Writing:\nGroup --> '+str(group)+', Text --> '+data[0])
+        # here we get the file's cell's name to write the value
+        target_cell = tools.matchCell(group, data[0])
+        #return target_cell
+        #We load the sheet's cell
+        target_cell = sheet[target_cell]
 
-            aux.append(target_cell)
-            aux.append(data[1])
+        aux.append(target_cell)
+        aux.append(data[1])
 
-            saveContent(aux)
+        saveContent(aux)
 
-            #return target_cell
-            #writeCell(target_cell, data[1], wb, file_name)
-                        
-            #wb.save('reports/'+file_name)
-    except:
-        log_utils.write("Error:\nFile --> analysis_utils.py\nMethod --> writeData\nArguments --> "+
-        file_name+', '+str(group)+', '+data[0])
+        #return target_cell
+        #writeCell(target_cell, data[1], wb, file_name)
+                    
+        #wb.save('reports/'+file_name)
