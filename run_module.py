@@ -2,6 +2,7 @@ import module_processing
 import analysis_utils
 import pymongo
 import os
+import pprint
 
 def getDocument(id):
     client = pymongo.MongoClient('localhost', 27654)
@@ -12,13 +13,14 @@ def getDocument(id):
     print('COLLECTION: SUCESS')
 
     cursor = coll.find({'_id':id})
-    print(cursor)
     return cursor
 
 def run(doc_id):
-    print('DEF RUN')
     #First
     document = getDocument(doc_id)
+    print ('\n')
+    pprint.pprint(document[0])
+    print ('\n')
     a, b, c, d, e = module_processing.separateGroups(document[0])
     f = module_processing.fixList(document[0])
 
@@ -37,6 +39,5 @@ def run(doc_id):
 
     coll.update_one({'_id': doc_id}, {'$set': {'processed': 1}})
 
-if __name__ == '__name__':
-    print('RUNNING')
+if __name__ == '__main__':
     run(os.sys.argv[1])
