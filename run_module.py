@@ -41,10 +41,12 @@ def run(doc_id):
 
         coll.update_one({'_id': ObjectId(doc_id)}, {'$set': {'processed': 1}})
         
+        print('--L I S T O :) --')
         return 1
     except:
+        print ('--E R R O R :( --')
         return 0
 
 if __name__ == '__main__':
-    print('--HOLI :) --')
+    #print('--HOLI :) --')
     run(os.sys.argv[1])
