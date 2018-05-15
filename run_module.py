@@ -43,8 +43,9 @@ def run(doc_id):
         
         print('--L I S T O :) --')
         return 1
-    except:
+    except Exception as e:
         print ('--E R R O R :( --')
+        print('Message:\n'+repr(e))
         return 0
 
 if __name__ == '__main__':
