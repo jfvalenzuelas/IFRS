@@ -19,7 +19,7 @@ def run(doc_id):
     #First
     document = getDocument(doc_id)
     print ('\n')
-    pprint.pprint(document[0])
+    pprint.pprint(document)
     print ('\n')
     a, b, c, d, e = module_processing.separateGroups(document[0])
     f = module_processing.fixList(document[0])
