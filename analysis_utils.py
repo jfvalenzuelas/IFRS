@@ -60,7 +60,7 @@ def writeCell(file_name):
             aux = float(("{0:.2f}".format(target_cell.value)))
             target_cell.value = value + aux
         
-    wb.save('reports/'+file_name)
+    wb.save('/var/www/html/scrapper/IFRS/reports/'+file_name)
     wb.close()
 
 def writeData(file_name, group, data):
