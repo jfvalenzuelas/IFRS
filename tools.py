@@ -11,7 +11,7 @@ global df4
 global df5
 global df6
 
-file = '/IFRS/utils.xlsx'
+file = 'IFRS/utils.xlsx'
 xl = pd.ExcelFile(file)
 
 df1 = xl.parse('ActivosCorrientes')
