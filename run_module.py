@@ -28,7 +28,7 @@ def run(doc_id):
 
         #Second
         file_name = document[0]['title']+'.xlsx'
-        analysis_utils.copy_rename('ifrs-template.xlsx', file_name)
+        analysis_utils.copy_rename('/var/www/html/scrapper/IFRS/ifrs-template.xlsx', file_name)
 
         #Third
         module_processing.writeData(a, b, c, d, e, f, file_name, document[0]['file_name'])

@@ -21,7 +21,7 @@ def openWorkBook(file_name):
     global wb
     global sheet
 
-    wb = load_workbook('reports/'+file_name)
+    wb = load_workbook('/var/www/html/scrapper/IFRS/reports/'+file_name)
 
     sheet = wb['IFRS']
 

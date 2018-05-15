@@ -115,6 +115,7 @@ def fixList(document):
 def runProcess(data, file_name, group):
     for x in data:
         analysis_utils.writeData(file_name, group, x)
+    print('Thread '+str(group)+' -- FINISHED --')
 
 def writeData(ac, anc, pc, pnc, pat, eerr, file_name, orig_file_name):
     try:
