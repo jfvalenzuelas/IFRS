@@ -25,14 +25,17 @@ def run(doc_id):
         #print ('\n')
         a, b, c, d, e = module_processing.separateGroups(document[0])
         f = module_processing.fixList(document[0])
+        print('--1 CHECK--')
 
         #Second
         file_name = document[0]['title']+'.xlsx'
-        analysis_utils.copy_rename('IFRS/ifrs-template.xlsx', file_name)
+        analysis_utils.copy_rename('/var/www/html/scrapper/IFRS/ifrs-template.xlsx', file_name)
+        print('--2 CHECK--')
 
         #Third
         module_processing.writeData(a, b, c, d, e, f, file_name, document[0]['file_name'])
         analysis_utils.writeCell(file_name)
+        print('--3 CHECK--')
 
         #Fourth
         client = pymongo.MongoClient('localhost', 27654)
@@ -40,7 +43,8 @@ def run(doc_id):
         coll = db.IFRS
 
         coll.update_one({'_id': ObjectId(doc_id)}, {'$set': {'processed': 1}})
-        
+        print('--4 CHECK--')
+
         print('--L I S T O :) --')
         return 1
     except Exception as e:
