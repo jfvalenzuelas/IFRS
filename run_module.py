@@ -16,6 +16,7 @@ def getDocument(id):
     return cursor
 
 def run(doc_id):
+    print('DEF RUN')
     #First
     document = getDocument(doc_id)
     a, b, c, d, e = module_processing.separateGroups(document[0])
@@ -37,4 +38,5 @@ def run(doc_id):
     coll.update_one({'_id': doc_id}, {'$set': {'processed': 1}})
 
 if __name__ == '__name__':
+    print('RUNNING')
     run(os.sys.argv[1])
