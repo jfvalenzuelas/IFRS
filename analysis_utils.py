@@ -26,7 +26,7 @@ def openWorkBook(file_name):
     sheet = wb['IFRS']
 
 def copy_rename(old_file_name, new_file_name):
-        src_dir= os.curdir
+        src_dir= '/var/www/html/scrapper/IFRS/'
         dst_dir= os.path.join(os.curdir , "reports")
         src_file = os.path.join(src_dir, old_file_name)
         shutil.copy(src_file,dst_dir)
