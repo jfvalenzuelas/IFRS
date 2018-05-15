@@ -29,12 +29,13 @@ def run(doc_id):
 
         #Second
         file_name = document[0]['title']+'.xlsx'
-        analysis_utils.copy_rename(file_name)
+        file_name2 = doc_id+'.xlsx'
+        analysis_utils.copy_rename(file_name2)
         print('--2 CHECK--')
 
         #Third
-        module_processing.writeData(a, b, c, d, e, f, file_name, document[0]['file_name'])
-        analysis_utils.writeCell(file_name)
+        module_processing.writeData(a, b, c, d, e, f, file_name2, document[0]['file_name'])
+        analysis_utils.writeCell(file_name2)
         print('--3 CHECK--')
 
         #Fourth
