@@ -29,7 +29,7 @@ def run(doc_id):
 
         #Second
         file_name = document[0]['title']+'.xlsx'
-        analysis_utils.copy_rename('/var/www/html/scrapper/IFRS/ifrs-template.xlsx', file_name)
+        analysis_utils.copy_rename(file_name)
         print('--2 CHECK--')
 
         #Third

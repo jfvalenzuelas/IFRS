@@ -25,13 +25,12 @@ def openWorkBook(file_name):
 
     sheet = wb['IFRS']
 
-def copy_rename(old_file_name, new_file_name):
-        src_dir= '/var/www/html/scrapper/IFRS/'
-        dst_dir= os.path.join(os.curdir , "reports")
-        src_file = os.path.join(src_dir, old_file_name)
-        shutil.copy(src_file,dst_dir)
+def copy_rename(new_file_name):
+        dst_dir= '/var/www/html/scrapper/IFRS/reports/'
+        src_file = '/var/www/html/scrapper/IFRS/ifrs-template.xlsx'
+        shutil.copy(src_file, dst_dir)
         
-        dst_file = os.path.join(dst_dir, old_file_name)
+        dst_file = '/var/www/html/scrapper/IFRS/reports/ifrs-template.xlsx'
         new_dst_file_name = os.path.join(dst_dir, new_file_name)
         os.rename(dst_file, new_dst_file_name)
 
