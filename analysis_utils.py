@@ -1,10 +1,8 @@
 import os
-import configparser
 from openpyxl import load_workbook
 import shutil
 import tools
 import threading
-import pprint
 import log_utils
 
 global wb
