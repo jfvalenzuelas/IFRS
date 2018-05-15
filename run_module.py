@@ -46,4 +46,5 @@ def run(doc_id):
         return 0
 
 if __name__ == '__main__':
+    print('--HOLI :) --')
     run(os.sys.argv[1])
