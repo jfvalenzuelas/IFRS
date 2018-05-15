@@ -21,16 +21,16 @@ def openWorkBook(file_name):
     global wb
     global sheet
 
-    wb = load_workbook('/var/www/html/scrapper/IFRS/reports/'+file_name)
+    wb = load_workbook('/var/www/html/scrapper/public/reports/'+file_name)
 
     sheet = wb['IFRS']
 
 def copy_rename(new_file_name):
-        dst_dir= '/var/www/html/scrapper/IFRS/reports/'
+        dst_dir= '/var/www/html/scrapper/public/reports/'
         src_file = '/var/www/html/scrapper/IFRS/ifrs-template.xlsx'
         shutil.copy(src_file, dst_dir)
         
-        dst_file = '/var/www/html/scrapper/IFRS/reports/ifrs-template.xlsx'
+        dst_file = '/var/www/html/scrapper/public/reports/ifrs-template.xlsx'
         new_dst_file_name = os.path.join(dst_dir, new_file_name)
         os.rename(dst_file, new_dst_file_name)
 
@@ -59,7 +59,7 @@ def writeCell(file_name):
             aux = float(("{0:.2f}".format(target_cell.value)))
             target_cell.value = value + aux
         
-    wb.save('/var/www/html/scrapper/IFRS/reports/'+file_name)
+    wb.save('/var/www/html/scrapper/public/reports/'+file_name)
     wb.close()
 
 def writeData(file_name, group, data):
