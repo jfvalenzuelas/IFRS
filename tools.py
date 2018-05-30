@@ -34,6 +34,14 @@ def evaluate(df, header, text):
             break
     return max(sim)
 
+def formatNumber(number):
+    if (number.count('.') == 1):
+        number = float(number)
+    else:
+        number = number.replace('.', '', number.count('.')-1)
+        number = float(number)
+    return number
+    
 def matchCell(group, text):
 
     if( group == 0):

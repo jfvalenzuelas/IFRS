@@ -45,13 +45,9 @@ def writeCell(file_name):
             value = float(0)
         else:
             try:
-                value = value.replace('.', '', 3)
-                value = float(value)
-                value = float("{0:.2f}".format(value))
+                value = tools.formatNumber(value)
             except ValueError:
-                value = value.replace('.', '', 3)
-                value = float(value)
-                value = float("{0:.2f}".format(value))
+                value = tools.formatNumber(value)
 
         if (target_cell.value == None):
             target_cell.value = value
