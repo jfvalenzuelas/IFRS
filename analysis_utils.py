@@ -18,9 +18,15 @@ def saveContent(data, log_data):
     log_contents.append(log_data)
     global_lock.release()
 
-def printLog():
-    print(log_contents)
-    
+def writeLog(doc_id):
+    log_file = open('/var/www/html/scrapper/public/logs/log.txt', 'w')
+    log_file.write(doc_id)
+    log_file.write('\n')
+    for x in log_contents:
+        log_file.write(x)
+        log_file.write('\n')
+    log_file.close()
+
 def openWorkBook(file_name):
     global wb
     global sheet
