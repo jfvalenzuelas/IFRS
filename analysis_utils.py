@@ -7,14 +7,18 @@ import log_utils
 
 global wb
 global sheet
-
 global_lock = threading.Lock()
 file_contents = []
 
-def saveContent(data):
+def saveContent(data, log_data):
     
     global_lock.acquire()
     file_contents.append(data)
+
+    with open('/var/www/html/scrapper/public/logs/log.txt', 'w') as log_file:
+        log_file.write(log_data)
+        log_file.close()
+
     global_lock.release()
 
 def openWorkBook(file_name):
@@ -69,6 +73,7 @@ def writeData(file_name, group, data):
         #log_utils.write('Writing:\nGroup --> '+str(group)+', Text --> '+data[0])
         # here we get the file's cell's name to write the value
         target_cell = tools.matchCell(group, data[0])
+        aux_target = target_cell
         #return target_cell
         #We load the sheet's cell
         target_cell = sheet[target_cell]
@@ -76,7 +81,10 @@ def writeData(file_name, group, data):
         aux.append(target_cell)
         aux.append(data[1])
 
-        saveContent(aux)
+        logdata = data[0]+' | '+str(data[1])+' | '+str(group)+' | '+str(aux_target)
+
+        saveContent(aux, logdata)
+
 
         #return target_cell
         #writeCell(target_cell, data[1], wb, file_name)
