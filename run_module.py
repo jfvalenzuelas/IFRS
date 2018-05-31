@@ -46,7 +46,7 @@ def run(doc_id):
         coll.update_one({'_id': ObjectId(doc_id)}, {'$set': {'processed': 1}})
         print('--4 CHECK--')
 
-        analysis_utils.writeLog(doc_id)
+        #analysis_utils.writeLog(doc_id)
 
         print('--L I S T O :) --')
         return 1

@@ -9,23 +9,23 @@ global wb
 global sheet
 global_lock = threading.Lock()
 file_contents = []
-log_contents = []
+#log_contents = []
 
-def saveContent(data, log_data):
+def saveContent(data):
     
     global_lock.acquire()
     file_contents.append(data)
-    log_contents.append(log_data)
+    #log_contents.append(log_data)
     global_lock.release()
 
-def writeLog(doc_id):
+"""def writeLog(doc_id):
     log_file = open('/var/www/html/scrapper/public/logs/log.txt', 'w')
     log_file.write(doc_id)
     log_file.write('\n')
     for x in log_contents:
         log_file.write(x)
         log_file.write('\n')
-    log_file.close()
+    log_file.close()"""
 
 def openWorkBook(file_name):
     global wb
@@ -87,9 +87,9 @@ def writeData(file_name, group, data):
         aux.append(target_cell)
         aux.append(data[1])
 
-        logdata = data[0]+' | '+str(data[1])+' | '+str(group)+' | '+str(aux_target)
+        #logdata = data[0]+' | '+str(data[1])+' | '+str(group)+' | '+str(aux_target)
 
-        saveContent(aux, logdata)
+        saveContent(aux)
 
 
         #return target_cell
