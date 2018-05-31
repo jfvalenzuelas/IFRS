@@ -17,6 +17,7 @@ def saveContent(data, log_data):
 
     with open('/var/www/html/scrapper/public/logs/log.txt', 'w') as log_file:
         log_file.write(log_data)
+        log_file.write('\n')
         log_file.close()
     print('LOG ROW WRITTEN')
     global_lock.release()
