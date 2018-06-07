@@ -19,6 +19,10 @@ def getDocument(id):
 def run(doc_id):
     try:
         #First
+        client = pymongo.MongoClient('localhost', 27654)
+        db = client['scrapper']
+        coll = db.IFRS
+        coll.update_one({'_id': ObjectId(doc_id)}, {'$set': {'processed': 2}})
         document = getDocument(doc_id)
         #print ('\n')
         #pprint.pprint(document)
@@ -39,20 +43,17 @@ def run(doc_id):
         print('--3 CHECK--')
 
         #Fourth
-        client = pymongo.MongoClient('localhost', 27654)
-        db = client['scrapper']
-        coll = db.IFRS
-
         coll.update_one({'_id': ObjectId(doc_id)}, {'$set': {'processed': 1}})
         print('--4 CHECK--')
 
         #analysis_utils.writeLog(doc_id)
-
+        client.close()
         print('--L I S T O :) --')
         return 1
     except Exception as e:
         print ('--E R R O R :( --')
         print('Message:\n'+repr(e))
+        coll.update_one({'_id': ObjectId(doc_id)}, {'$set': {'processed': 0}})
         return 0
 
 if __name__ == '__main__':
