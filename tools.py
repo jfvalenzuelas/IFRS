@@ -35,11 +35,16 @@ def evaluate(df, header, text):
     return max(sim)
 
 def formatNumber(number):
-    if (number.count('.') == 1):
-        number = float(number)
-    else:
-        number = number.replace('.', '', number.count('.')-1)
-        number = float(number)
+    if (')' in number or '(' in number):
+        number = number.replace(')', '', number.count(')'))
+        number = number.replace('(', '', number.count('('))
+        number = '-'+number
+        
+    #if (number.count('.') == 1):
+    #    number = float(number)
+    #else:
+    number = number.replace('.', '', number.count('.'))
+    number = float(number)
     return number
     
 def matchCell(group, text):

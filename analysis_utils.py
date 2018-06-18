@@ -9,23 +9,12 @@ global wb
 global sheet
 global_lock = threading.Lock()
 file_contents = []
-#log_contents = []
 
 def saveContent(data):
     
     global_lock.acquire()
     file_contents.append(data)
-    #log_contents.append(log_data)
     global_lock.release()
-
-"""def writeLog(doc_id):
-    log_file = open('/var/www/html/scrapper/public/logs/log.txt', 'w')
-    log_file.write(doc_id)
-    log_file.write('\n')
-    for x in log_contents:
-        log_file.write(x)
-        log_file.write('\n')
-    log_file.close()"""
 
 def openWorkBook(file_name):
     global wb
@@ -76,11 +65,8 @@ def writeData(file_name, group, data):
     ('ganancia' in data[0].lower().strip() and 'antes de impuesto' in data[0].lower().strip())):
         pass
     else:
-        #log_utils.write('Writing:\nGroup --> '+str(group)+', Text --> '+data[0])
         # here we get the file's cell's name to write the value
         target_cell = tools.matchCell(group, data[0])
-        aux_target = target_cell
-        #return target_cell
         #We load the sheet's cell
         target_cell = sheet[target_cell]
 

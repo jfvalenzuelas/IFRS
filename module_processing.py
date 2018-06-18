@@ -23,7 +23,7 @@ def separateGroups(document):
     for x in data:
         text = x['name'].lower().strip()
         value = x['value']
-        if ('total' in text):
+        if ('total' in text or ('estado' in text and 'consolidado' in text)):
             pass
         else:
             if (text == 'activo corriente' or text == 'activos corrientes'):
