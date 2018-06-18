@@ -113,9 +113,12 @@ def fixList(document):
     return EERR
     
 def runProcess(data, file_name, group):
-    for x in data:
-        analysis_utils.writeData(file_name, group, x)
-    print('Thread '+str(group)+' -- FINISHED --')
+    try:
+        for x in data:
+            analysis_utils.writeData(file_name, group, x)
+        print('Thread '+str(group)+' -- FINISHED --')
+    except Exception as e:
+        print(str(e))
 
 def writeData(ac, anc, pc, pnc, pat, eerr, file_name, orig_file_name):
     try:
