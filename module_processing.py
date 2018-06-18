@@ -1,5 +1,6 @@
 import analysis_utils
 import threading
+import re
 
 def separateGroups(document):
     ########################################
@@ -27,7 +28,7 @@ def separateGroups(document):
         if ('total' in text or ('estado' in text and 'consolidado' in text)):
             pass
         else:
-            if (text == 'activo corriente' or text == 'activos corrientes'):
+            if (re.match("[aA][cC][tT][iI][vV][oO]([sS])?\s[cC][oO][rR][rR][iI][eE][nN][tT][eE](s)?$", text) != None):
                 b1 = True
                 b2 = False
                 b3 = False
