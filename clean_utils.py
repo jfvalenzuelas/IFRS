@@ -77,7 +77,9 @@ def correctText(element):
     if ('adm.' in element):
         element = element.replace('adm.', 'administracion')
     
-    if ('biologico' in element):
-        element = element.replace('biologico', 'biológico')
+    element = element.replace('.', ' ', element.count('.'))
+    element = element.replace('biologico', 'biológico')
+    element = element.replace(',', '', element.count(','))
+    element = element.replace('  ', ' ', element.count(' '))
 
     return element

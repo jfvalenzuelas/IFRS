@@ -57,12 +57,18 @@ def writeCell(file_name):
     wb.save('/var/www/html/scrapper/public/reports/'+file_name)
     wb.close()
 
+def ignoreAccount(text):
+    text = text.strip().lower()
+    if (('ganancia bruta' in text) or ('atrib' in text and ('propiet' in text or 'particip' in text) and 'control' in text) or 
+       ('total' in text) or ('antes de impuesto' in text)):
+        return True
+    else:
+        return False
+
 def writeData(file_name, group, data):
     aux = []
 
-    if (data[0].lower().strip() == 'ganancia bruta' or 
-    ('utilidad' in data[0].lower().strip() and 'ejercicio' in data[0].lower().strip()) or 
-    ('ganancia' in data[0].lower().strip() and 'antes de impuesto' in data[0].lower().strip())):
+    if (ignoreAccount(data[0])):
         pass
     else:
         # here we get the file's cell's name to write the value

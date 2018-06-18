@@ -29,17 +29,28 @@ def run(doc_id):
         #print ('\n')
         a, b, c, d, e = module_processing.separateGroups(document[0])
         f = module_processing.fixList(document[0])
+        print(a)
+        print('\n')
+        print(b)
+        print('\n')
+        print(c)
+        print('\n')
+        print(d)
+        print('\n')
+        print(e)
+        print('\n')
+        print(f)
+        print('\n')
         print('--1 CHECK--')
 
         #Second
-        file_name = document[0]['title']+'.xlsx'
-        file_name2 = doc_id+'.xlsx'
-        analysis_utils.copy_rename(file_name2)
+        file_name = doc_id+'.xlsx'
+        analysis_utils.copy_rename(file_name)
         print('--2 CHECK--')
 
         #Third
-        module_processing.writeData(a, b, c, d, e, f, file_name2, document[0]['file_name'])
-        analysis_utils.writeCell(file_name2)
+        module_processing.writeData(a, b, c, d, e, f, file_name, document[0]['file_name'])
+        analysis_utils.writeCell(file_name)
         print('--3 CHECK--')
 
         #Fourth
