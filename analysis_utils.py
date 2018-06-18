@@ -60,7 +60,7 @@ def writeCell(file_name):
 def ignoreAccount(text):
     text = text.strip().lower()
     if (('ganancia bruta' in text) or ('atrib' in text and ('propiet' in text or 'particip' in text) and 'control' in text) or 
-       ('total' in text) or ('antes de impuesto' in text)):
+       ('total' in text) or ('antes' in text and 'mpuesto' in text)):
         return True
     else:
         return False
@@ -69,7 +69,7 @@ def writeData(file_name, group, data):
     aux = []
 
     if (ignoreAccount(data[0])):
-        pass
+        continue
     else:
         # here we get the file's cell's name to write the value
         target_cell = tools.matchCell(group, data[0])
