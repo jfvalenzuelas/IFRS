@@ -22,6 +22,7 @@ def separateGroups(document):
     count = 1
     for x in data:
         text = x['name'].lower().strip()
+        text = text.replace(',', '', text.count(','))
         value = x['value']
         if ('total' in text or ('estado' in text and 'consolidado' in text)):
             pass
