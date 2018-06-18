@@ -69,7 +69,7 @@ def writeData(file_name, group, data):
     aux = []
 
     if (ignoreAccount(data[0])):
-        continue
+        print('IGNORED ==> '+data[0])
     else:
         # here we get the file's cell's name to write the value
         target_cell = tools.matchCell(group, data[0])
